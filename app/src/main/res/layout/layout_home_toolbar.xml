@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.xxmukulxx.notes.feature_home.presentation.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ll_chat_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/iv_toolbar_logo"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shopping_app"
+            android:textSize="@dimen/_19ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:onClick="@{viewModel::handleClick}"
+            android:padding="@dimen/_5ssp"
+            android:src="@drawable/ic_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            style="@style/searchBox"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="12dp"
+            android:visibility="@{viewModel.isSearchBarVisible ?  View.VISIBLE : View.GONE}"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="@dimen/_5sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_toolbar_logo">
+
+            <EditText
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8ssp"
+                android:hint="@string/search"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_search"
+                android:background="@null"
+                android:onTextChanged="@{viewModel::onSearchQuery}"
+                />
+
+<!--            <EditText-->
+<!--                android:id="@+id/search_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="@dimen/_8ssp"-->
+<!--                android:focusable="false"-->
+<!--                android:hint="@string/search"-->
+<!--                android:drawableLeft="@drawable/ic_search"-->
+<!--                android:background="@null"-->
+<!--                android:visibility="visible"-->
+<!--                app:iconifiedByDefault="false"-->
+<!--                android:onTextChanged="@{viewModel::onSearchQuery}"-->
+<!--                app:queryBackground="@android:color/transparent"-->
+<!--                app:queryHint="@string/search"-->
+<!--                app:searchIcon="@drawable/ic_search" />-->
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/cardView2">
+
+            <View
+                style="@style/divider"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="1dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAddProduct"
+                style="@style/appBarButton"
+                android:layout_width="@dimen/new_product_img_size"
+                android:layout_height="@dimen/new_product_img_size"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:onClick="@{viewModel::handleClick}"
+                android:src="@drawable/ic_add"
+                android:translationZ="@dimen/_6sdp" />
+
+            <View
+                style="@style/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

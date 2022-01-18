@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.xxmukulxx.notes.feature_login_signup.presentation.LoginSignUpViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".feature_login_signup.presentation.LoginActivity">
+
+        <include
+            android:id="@+id/layout_appBar"
+            layout="@layout/default_app_bar" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:hint="@string/user_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/off_white"
+                android:inputType="textEmailAddress"
+                android:onTextChanged="@{viewModel::onNameChanged}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:hint="@string/email_address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/off_white"
+                android:inputType="textEmailAddress"
+                android:onTextChanged="@{viewModel::onEmailChanged}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:hint="@string/password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/off_white"
+                android:inputType="textPassword"
+                android:onTextChanged="@{viewModel::onPasswordChanged}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bnSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:onClick="@{viewModel::handleClick}"
+            android:text="@string/signup" />
+    </LinearLayout>
+</layout>
